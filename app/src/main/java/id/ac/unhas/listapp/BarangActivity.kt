@@ -19,15 +19,14 @@ class BarangActivity : AppCompatActivity() {
         setContentView(R.layout.activity_barang)
 
         try {
-            var bundle: Bundle = intent.extras
-            id = bundle.getInt("MainActId", 0)
-            if (id !=0){
-                txNama.setText(bundle.getString("MainActNama"))
-                txJumlah.setText(bundle.getString("MainActJumlah"))
-                txHarga.setText(bundle.getString("MainActHarga"))
+            var bundle: Bundle? = intent.extras
+            id = bundle?.getInt("MainActId", 0)!!
+            if (id !=0) {
+                txNama.setText(bundle?.getString("MainActNama"))
+                txJumlah.setText(bundle?.getString("MainActJumlah"))
+                txHarga.setText(bundle?.getString("MainActHarga"))
             }
-        } catch (ex: Exception){
-        }
+        } catch (ex: Exception){}
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -94,6 +93,7 @@ class BarangActivity : AppCompatActivity() {
                 alertDialog.show()
                 return true
             }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
